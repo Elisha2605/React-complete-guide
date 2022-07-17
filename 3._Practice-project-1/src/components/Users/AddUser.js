@@ -6,11 +6,13 @@ import ErrorModal from "../UI/ErrorModal";
 import classes from "./AddUser.module.css";
 
 const AddUser = (props) => {
+  // state
   const [userNameInput, setUsernameInput] = useState("");
   const [userAgeInput, setUserAgeInput] = useState("");
 
   const [error, setError] = useState();
 
+  // onSumbit
   const addUserInputHandler = (event) => {
     event.preventDefault();
     if (userNameInput.trim().length === 0 || userAgeInput.trim().length === 0) {
@@ -37,14 +39,17 @@ const AddUser = (props) => {
     setUserAgeInput("");
   };
 
+  // input - username
   const userNameInputHandler = (event) => {
     setUsernameInput(event.target.value);
   };
 
+  // input - age
   const userAgeInputHandler = (event) => {
     setUserAgeInput(event.target.value);
   };
 
+  // error
   const errorHandler = () => {
     setError(null);
   };
