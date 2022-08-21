@@ -16,10 +16,16 @@ function App() {
     });
   }
 
+  const deleteUser = (id) => {
+    setUsersList((prevUserListState) => {
+      return prevUserListState.filter(userID => userID.id !== id)
+    })
+  }
+
   return (
     <div>
       <AddUser ondAddUser={addUserHanlder} />
-      <UsersList users={usersList} />
+      <UsersList users={usersList} onDelete={deleteUser} />
     </div>
   );
 }
