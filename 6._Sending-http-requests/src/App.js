@@ -4,6 +4,8 @@ import MoviesList from './components/MoviesList';
 import AddMovie from './components/AddMovie';
 import './App.css';
 
+const DATABASE_URL = process.env.REACT_APP_databaseURL
+
 function App() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -13,7 +15,7 @@ function App() {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch('');
+      const response = await fetch(DATABASE_URL);
       if (!response.ok) {
         throw new Error('Something went wrong!');
       }
@@ -43,7 +45,7 @@ function App() {
   }, [fetchMoviesHandler]);
 
   async function addMovieHandler(movie) {
-    const response = await fetch('', {
+    const response = await fetch(DATABASE_URL, {
       method: 'POST',
       body: JSON.stringify(movie),
       headers: {
