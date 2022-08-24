@@ -2,6 +2,8 @@ import Section from '../UI/Section';
 import TaskForm from './TaskForm';
 import useHttp from '../../hooks/use-http';
 
+const DATABASE_URL = process.env.REACT_APP_databaseURL
+
 const NewTask = (props) => {
   const { isLoading, error, sendRequest: sendTaskRequest } = useHttp();
 
@@ -15,7 +17,7 @@ const NewTask = (props) => {
   const enterTaskHandler = async (taskText) => {
     sendTaskRequest(
       {
-        url: 'https://react-http-6b4a6.firebaseio.com/tasks.json',
+        url: DATABASE_URL,
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

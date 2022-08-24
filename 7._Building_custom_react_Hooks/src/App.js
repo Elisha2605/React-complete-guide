@@ -4,6 +4,8 @@ import Tasks from './components/Tasks/Tasks';
 import NewTask from './components/NewTask/NewTask';
 import useHttp from './hooks/use-http';
 
+const DATABASE_URL = process.env.REACT_APP_databaseURL
+
 function App() {
   const [tasks, setTasks] = useState([]);
 
@@ -21,7 +23,7 @@ function App() {
     };
 
     fetchTasks(
-      { url: 'https://react-http-6b4a6.firebaseio.com/tasks.json' },
+      { url: DATABASE_URL },
       transformTasks
     );
   }, [fetchTasks]);
